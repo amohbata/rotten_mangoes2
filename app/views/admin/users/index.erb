@@ -1,0 +1,12 @@
+<h2> Below are the list of users - Admin view </h2>
+<% @users.each do |user| %>
+<table style = "width:300px">
+	<tr>
+		<td><h3> <%= user.firstname %> </h3></td>
+
+		<td><%= form_tag(admin_user_path(user.id), method: :delete) do %>
+		<div><%= submit_tag 'delete' %></div></td>
+	</tr>
+	<% end %>
+
+<% end %>
