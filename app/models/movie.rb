@@ -24,6 +24,17 @@ class Movie < ActiveRecord::Base
 
   validate :release_date_is_in_the_future
 
+  ##scopes are like class methods
+  # scope :with_director, -> do |director| where(director: director)
+  # end
+
+  # scope :matching_title, -> do |title| where(title: title)
+  # end
+
+  def self.ordered_by_release_date
+    Movie.order(release_date: :desc, title: :asc)
+  end
+
   def review_average
   	if reviews.size == 0
   		"There are no reviews"

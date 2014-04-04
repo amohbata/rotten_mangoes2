@@ -1,7 +1,9 @@
 class MoviesController < ApplicationController
 
   def index
-    @movies = Movie.all
+    @movies = Movie.ordered_by_release_date #method has been defined in movie model for seperation of labour
+    # @movies = @movies.matching_title(params[:title]) if params[:title].present? #for search
+    # @movies = @movies.with_director(params[:director]) if params[:director].present? 
   end
 
   def show
